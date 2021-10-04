@@ -1,4 +1,4 @@
-﻿//Team Alpha
+﻿//Team alpha
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
