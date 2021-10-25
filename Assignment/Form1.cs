@@ -25,12 +25,10 @@ namespace StudentDB
             readDatabaseData();
     
         }
-        #region RESULT METHODS
+        #region Fill UP METHOD
         /// <summary>
         /// Show the Result of the QuizScore
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void submitButton_Click(object sender, EventArgs e)
         {
             fillUpForm();
@@ -115,8 +113,6 @@ namespace StudentDB
 
         #region HELPER METHODS
 
-
-
         /// <summary>
         /// After the input data can used in CRUD Operations, the textbox will become null
         /// </summary>
@@ -130,6 +126,18 @@ namespace StudentDB
             resultTextBox.Text = "";
             readDatabaseData();
         }
+        /// <summary>
+        /// Clear text
+        /// </summary>
+        private void clearText()
+        {       
+            idTextBox.Text = "";
+            lastNameTextBox.Text = "";
+            firstNameTextBox.Text = "";
+            quizScoreTextBox.Text = "";
+            resultTextBox.Text = "";    
+        }
+
         /// <summary>
         /// Combing SQL COMMAND, Add the values
         /// </summary>
@@ -170,7 +178,7 @@ namespace StudentDB
             con.Close();
         }
 
-        #endregion
+        #endregion HELPER METHODS
 
         #region CRUD OPERATIONS
 
@@ -303,8 +311,31 @@ namespace StudentDB
             searchTextBox.ForeColor = Color.DarkGray;
         }
 
-        #endregion
+        /// <summary>
+        /// Clear all the input textBox
+        /// </summary>
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            clearText();
+        }
 
+        /// <summary>
+        /// Clicking the selected row in DB and appear on the textbox
+        /// </summary>
+        private void studentGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (studentGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                studentGridView.CurrentRow.Selected = true;
+                idTextBox.Text = studentGridView.Rows[e.RowIndex].Cells["Id"].FormattedValue.ToString();
+                lastNameTextBox.Text = studentGridView.Rows[e.RowIndex].Cells["Lastname"].FormattedValue.ToString();
+                firstNameTextBox.Text = studentGridView.Rows[e.RowIndex].Cells["Firstname"].FormattedValue.ToString();
+                quizScoreTextBox.Text = studentGridView.Rows[e.RowIndex].Cells["Quizscore"].FormattedValue.ToString();
+                resultTextBox.Text = studentGridView.Rows[e.RowIndex].Cells["Remarks"].FormattedValue.ToString();
+            }
+        }
+
+        #endregion FEATURES
 
     }
 }
