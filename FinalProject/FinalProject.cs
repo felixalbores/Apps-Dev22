@@ -226,7 +226,7 @@ namespace SimpleGradingSystem
 
 
         /// <summary>
-        /// Calculate Grade
+        /// Calculate Grades
         /// </summary>
         private void calculateButton_Click(object sender, EventArgs e)
         {
