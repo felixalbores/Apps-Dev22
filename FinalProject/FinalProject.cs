@@ -39,7 +39,7 @@ namespace SimpleGradingSystem
         #region HELPER METHODS
 
         /// <summary>
-        /// OPEN SQL CONNECTION
+        /// OPEN SQL CONNECTIONS
         /// </summary>  
         private void openSqlConnection()
         {
